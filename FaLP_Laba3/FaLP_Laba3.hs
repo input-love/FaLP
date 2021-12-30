@@ -3,6 +3,11 @@ data PriceList = PriceList [(Product, Int)] deriving (Show, Eq)
 
 --let prList = PriceList [(Product "Pukizi" "ZenBook" "Asus", 1337), (Product "TemaYshkinnn" "NoteBook" "Acer", 228), (Product "Putin" "NoteBook" "Acer", 322)]
 
+--lookupCompany prList
+--productsByName prList "Putin"
+--productsByPrice prList 228
+--eraseByName prList "Putin"
+
 getName:: (Product, Int) -> String
 getName (Product name _ _,  _) = name
 
@@ -13,9 +18,9 @@ getPrice:: (Product, Int) -> Int
 getPrice (_, price) = price 
 
 
-lookupCopany:: PriceList -> [String]
-lookupCopany (PriceList x)  | (x == []) = []
-                            | otherwise = getName(head x): lookupCopany(PriceList (tail x))
+lookupCompany:: PriceList -> [String]
+lookupCompany (PriceList x)  | (x == []) = []
+                            | otherwise = getName(head x): lookupCompany(PriceList (tail x))
 
 productsByName:: PriceList -> String -> PriceList
 productsByName (PriceList x) name = PriceList [elem | elem<-x, getName elem == name]

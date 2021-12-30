@@ -1,0 +1,20 @@
+---1 часть 
+(DEFUN CalculateXYZ (X Y Z)
+  (COND ((AND (> X 0) (> Y 0) (> Z 0)) (- (* X Y Y Y) (* Y Y)))
+        (T (+ (* X X) (* Z Z))))
+)
+
+
+---2 часть 1 пункт
+(defun last-elem (list)
+	(cond (equal (cdr list) nil) (car list)
+	      (t (last-elem (cdr list)))
+	)
+)
+
+
+---2 часть 2 пункт
+(defun count-symbol (lst)
+  (cond ((equal lst NIL) 0)
+        (T (+ (length (car lst)) (count-symbol (cdr lst)))))
+)
